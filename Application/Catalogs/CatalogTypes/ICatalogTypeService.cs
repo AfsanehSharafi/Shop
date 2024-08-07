@@ -8,7 +8,7 @@ namespace Application.Catalogs.CatalogTypes
 {
     public interface ICatalogTypeService
     {
-        //////////////
+        ////////////
     }
 
     public class CatalogTypeDto
