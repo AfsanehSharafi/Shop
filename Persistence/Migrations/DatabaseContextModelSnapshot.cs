@@ -60,10 +60,7 @@ namespace Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ParentCatalogTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ParetCatalogTypeId")
+                    b.Property<int?>("ParentCatalogTypeId")
                         .HasColumnType("int");
 
                     b.Property<string>("Type")
@@ -83,8 +80,7 @@ namespace Persistence.Migrations
                     b.HasOne("Domain.Catalogs.CatalogType", "ParentCatalogType")
                         .WithMany("SubType")
                         .HasForeignKey("ParentCatalogTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("ParentCatalogType");
                 });

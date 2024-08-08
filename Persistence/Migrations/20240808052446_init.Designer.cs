@@ -12,8 +12,8 @@ using Persistence.Contexts;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20240807154810_Catalogs")]
-    partial class Catalogs
+    [Migration("20240808052446_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -63,10 +63,7 @@ namespace Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ParentCatalogTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ParetCatalogTypeId")
+                    b.Property<int?>("ParentCatalogTypeId")
                         .HasColumnType("int");
 
                     b.Property<string>("Type")
@@ -86,8 +83,7 @@ namespace Persistence.Migrations
                     b.HasOne("Domain.Catalogs.CatalogType", "ParentCatalogType")
                         .WithMany("SubType")
                         .HasForeignKey("ParentCatalogTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("ParentCatalogType");
                 });
