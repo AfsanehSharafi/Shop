@@ -11,6 +11,7 @@ using Website.Endpoint.Hubs;
 using Microsoft.AspNetCore.Builder;
 using Application.Visitors.VisitorOnline;
 using Website.Endpoint.Utilities.Filters.Middlewares;
+using Application.Catalogs.CatalogTypes.CrudService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,6 +41,7 @@ builder.Services.AddTransient<ISaveVisitorInfoService, SaveVisitorInfoService>()
 builder.Services.AddScoped<SaveVisitorFilter>();
 builder.Services.AddSignalR();
 builder.Services.AddTransient<IIVisitorOnlineService, VisitorOnlineService>();
+builder.Services.AddTransient<ICatalogTypeService, CatalogTypeService>();
 
 var app = builder.Build();
 

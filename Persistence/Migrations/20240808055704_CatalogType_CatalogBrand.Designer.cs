@@ -12,7 +12,7 @@ using Persistence.Contexts;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20240808053639_CatalogType_CatalogBrand")]
+    [Migration("20240808055704_CatalogType_CatalogBrand")]
     partial class CatalogType_CatalogBrand
     {
         /// <inheritdoc />
@@ -63,25 +63,16 @@ namespace Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("InsertTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsRemove")
-                        .HasColumnType("bit");
-
                     b.Property<int?>("ParentCatalogTypeId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("RemoveTime")
-                        .HasColumnType("datetime2");
+                    b.Property<int?>("ParetCatalogTypeId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Type")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
-
-                    b.Property<DateTime?>("UpdateTime")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 

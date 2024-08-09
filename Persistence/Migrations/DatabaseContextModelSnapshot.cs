@@ -63,6 +63,9 @@ namespace Persistence.Migrations
                     b.Property<int?>("ParentCatalogTypeId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("ParetCatalogTypeId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Type")
                         .IsRequired()
                         .HasMaxLength(100)
